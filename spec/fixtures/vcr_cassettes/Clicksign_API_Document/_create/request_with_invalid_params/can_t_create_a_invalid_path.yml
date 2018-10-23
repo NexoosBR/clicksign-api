@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.clicksign.com/api/v1/documents?access_token=CLICKSIGN_ACCESS_TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"document":{"path":"/teste","content_base64":"data:application/pdf;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR4nGNi\nAAAABgADNjd8qAAAAABJRU5ErkJggg==\n"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Date:
+      - Tue, 23 Oct 2018 21:45:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 3adffefb-9cd9-453a-a821-9861cb422476
+      X-Runtime:
+      - '0.020190'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJlcnJvcnMiOlsiTm9tZSBkbyBhcnF1aXZvIG7Do28gY29udMOpbSBtaW1ldHlwZSB2w6FsaWRvIl19
+    http_version: 
+  recorded_at: Tue, 23 Oct 2018 21:45:44 GMT
+recorded_with: VCR 4.0.0
