@@ -1,5 +1,8 @@
-require "bundler/setup"
-require "clicksign/api"
+require 'bundler/setup'
+require 'clicksign/api'
+require 'simplecov'
+
+SimpleCov.start
 
 Dir[
   File.expand_path('../support/**/*.rb', __FILE__)
