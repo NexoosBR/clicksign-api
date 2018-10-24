@@ -11,6 +11,7 @@ end
 
 require "clicksign/api/requests"
 require "clicksign/api/document"
+require "clicksign/api/signer"
 
 
 module Clicksign

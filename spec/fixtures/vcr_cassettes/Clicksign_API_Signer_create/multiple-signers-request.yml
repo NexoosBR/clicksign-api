@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.clicksign.com/api/v1/documents/de3b4892-4cab-45f3-b84c-b0fb58b2d3e6/signers/?access_token=CLICKSIGN_ACCESS_TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"signers":[{"email":"francisco+teste@nexoos.com.br","sign_as":"sign","auths":["email"],"send_email":true},{"email":"lucas+teste@nexoos.com.br","sign_as":"sign","auths":["email"],"send_email":true}]}'
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Wed, 24 Oct 2018 19:57:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"3ad217367e8be8c8aa4148eefd510749"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - aab5d5d6-1460-4473-9aee-253216476e13
+      X-Runtime:
+      - '0.205259'
+    body:
+      encoding: UTF-8
+      string: '{"document":{"key":"de3b4892-4cab-45f3-b84c-b0fb58b2d3e6","path":"/teste/teste.pdf","filename":"teste.pdf","uploaded_at":"2018-10-24T17:11:44.358Z","updated_at":"2018-10-24T17:11:47.527Z","finished_at":null,"deadline_at":"2018-11-24T01:59:00.000Z","status":"running","auto_close":true,"locale":"pt-BR","downloads":{"original_file_url":"https://clicksign-content-sandbox.s3.amazonaws.com/2018/10/24/17/11/44/64bf9978-4d4c-49a9-9eb8-f78230cef60e/file.pdf?X-Amz-Expires=302\u0026X-Amz-Date=20181024T195718Z\u0026X-Amz-Security-Token=FQoGZXIvYXdzEAIaDBiJmkzRXgsrxKG04iK3AzKeOmSmG307y6n1BNe/3wNAMjVoNd7BxXjKIK1SU4Z4Cj5DuCxwMBLr57xnn3i2%2BK2zO3kFKHxssMgfVmNMWFsqs5cnXQT0gaEG96bAqC9dUXwWgoCEIhkO7cIQjbG3UhbHtspZSCXlTDBCku4LhaNznVGnSdivcJ6wYCda5ecvVmChXf3pqCXS9hpAKJggTd1rRsmEb8J8wq3H6Pz/hGmghZd5PheutM00rp%2BiSEoczKGbqoIlAIexWAotcHtuW2HNKI8r9HMWTjFS%2B2oVKqI7TqCNNb1PF6bI4SXm9FHYCadXMkXRO%2ByYKQy3Hf86ev%2BXSDVWgwG5pf7bzvrd7HoSTWG/MKLejWro90UcKp%2BfbZaVkpkmbjHfgAaMli8jIeD2IuJI5Vww0Ve7RDHZ6qEdyysqYZEbXw3DQ8Oy9lQYIibwUy2dI/%2B4ANBcGbuEVePhuy1CvhpINh4VjSLLVJvWTjfuWyl2tHRjDwIokXHXLQtmoUjq5xdIjV6xs6PCzP%2BOwp6SCXdWS5OEiWjX5tOCFCNcBglWrQikOIOBQ%2BkdQdeaPsYU3mY/1zMmDxz5YiWqPA%2Borp0otMjC3gU%3D\u0026X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=ASIA2ERYHIYD4WHHRNM3/20181024/us-east-1/s3/aws4_request\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=a07183b9b9810697b602911d5055b92aac37ed4ed4ca1d5c4ffb418860f3426e"},"signers":[{"list_key":"8b426350-a5b1-447e-a33b-ec7e1e1eeb03","key":"258cb328-5928-4a7d-a8fd-2b7cfc221ab3","email":"francisco@nexoos.com.br","name":null,"has_documentation":true,"documentation":null,"birthday":null,"phone_number":null,"sign_as":"sign","url":"https://sandbox.clicksign.com/sign/258cb328-5928-4a7d-a8fd-2b7cfc221ab3","auths":["email"],"created_at":"2018-10-24T19:50:43.660Z"},{"list_key":"4dd87512-6342-4a4e-b35b-0eb50bf75d07","key":"c8d249c7-0fa2-4d16-aa40-1fae574bf8ec","email":"francisco+teste@nexoos.com.br","name":null,"has_documentation":true,"documentation":null,"birthday":null,"phone_number":null,"sign_as":"sign","url":"https://sandbox.clicksign.com/sign/c8d249c7-0fa2-4d16-aa40-1fae574bf8ec","auths":["email"],"created_at":"2018-10-24T19:57:20.191Z"},{"list_key":"475deb66-7759-43f2-b2dd-65ad11e6eca8","key":"ff035baa-791b-40c8-a788-bf51b281cf7c","email":"lucas+teste@nexoos.com.br","name":null,"has_documentation":true,"documentation":null,"birthday":null,"phone_number":null,"sign_as":"sign","url":"https://sandbox.clicksign.com/sign/ff035baa-791b-40c8-a788-bf51b281cf7c","auths":["email"],"created_at":"2018-10-24T19:57:20.194Z"}],"events":[{"name":"add_signer","data":{"user":{"email":"dev@nexoos.com.br","name":"Nexoos
+        do Brasil LTDA"},"account":{"key":"7fca3b0f-1667-4aae-8ebb-181bea0987d2"},"signers":[{"sign_as":"sign","key":"c8d249c7-0fa2-4d16-aa40-1fae574bf8ec","email":"francisco+teste@nexoos.com.br","name":null,"birthday":null,"documentation":null,"has_documentation":true,"created_at":"2018-10-24T17:57:20.191-02:00","auths":["email"],"list_key":"4dd87512-6342-4a4e-b35b-0eb50bf75d07","url":"https://sandbox.clicksign.com/sign/c8d249c7-0fa2-4d16-aa40-1fae574bf8ec"},{"sign_as":"sign","key":"ff035baa-791b-40c8-a788-bf51b281cf7c","email":"lucas+teste@nexoos.com.br","name":null,"birthday":null,"documentation":null,"has_documentation":true,"created_at":"2018-10-24T17:57:20.194-02:00","auths":["email"],"list_key":"475deb66-7759-43f2-b2dd-65ad11e6eca8","url":"https://sandbox.clicksign.com/sign/ff035baa-791b-40c8-a788-bf51b281cf7c"}]},"occurred_at":"2018-10-24T19:57:20.300Z"},{"name":"add_signer","data":{"user":{"email":"dev@nexoos.com.br","name":"Nexoos
+        do Brasil LTDA"},"account":{"key":"7fca3b0f-1667-4aae-8ebb-181bea0987d2"},"signers":[{"sign_as":"sign","key":"258cb328-5928-4a7d-a8fd-2b7cfc221ab3","email":"francisco@nexoos.com.br","name":null,"birthday":null,"documentation":null,"has_documentation":true,"created_at":"2018-10-24T17:50:43.660-02:00","auths":["email"],"list_key":"8b426350-a5b1-447e-a33b-ec7e1e1eeb03","url":"https://sandbox.clicksign.com/sign/258cb328-5928-4a7d-a8fd-2b7cfc221ab3"}]},"occurred_at":"2018-10-24T19:50:43.721Z"},{"name":"upload","data":{"user":{"email":"dev@nexoos.com.br","name":"Nexoos
+        do Brasil LTDA"},"account":{"key":"7fca3b0f-1667-4aae-8ebb-181bea0987d2"},"deadline_at":"2018-11-23T23:59:00.000-02:00","auto_close":true,"locale":"pt-BR"},"occurred_at":"2018-10-24T17:11:44.381Z"}]}}'
+    http_version: 
+  recorded_at: Wed, 24 Oct 2018 19:57:20 GMT
+recorded_with: VCR 4.0.0
