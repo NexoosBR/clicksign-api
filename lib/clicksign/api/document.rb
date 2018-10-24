@@ -4,6 +4,7 @@ module Clicksign
       extend Requests
 
       REQUEST_PATH = '/api/v1/documents/'
+      ATTRIBUTES = [:path, :deadline_at, :auto_close, :locale, :signers]
 
       class << self
         def create(params = {})
@@ -15,7 +16,7 @@ module Clicksign
         end
 
         def body(params)
-          document = [:path, :deadline_at, :auto_close, :locale, :signers].each.with_object({}) do |key, hash|
+          document = ATTRIBUTES.each.with_object({}) do |key, hash|
             hash[key] = params[key] if params.has_key?(key)
           end
 
