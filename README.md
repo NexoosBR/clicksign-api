@@ -1,5 +1,10 @@
 # Clicksign::Api
 
+[![Gem Version](https://badge.fury.io/rb/clicksign-api.svg)](https://badge.fury.io/rb/clicksign-api)
+[![Build Status](https://travis-ci.org/NexoosBR/clicksign-api.svg?branch=master)](https://travis-ci.org/NexoosBR/clicksign-api)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7e4c11dd4129d37ee34c/maintainability)](https://codeclimate.com/github/NexoosBR/clicksign-api/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7e4c11dd4129d37ee34c/test_coverage)](https://codeclimate.com/github/NexoosBR/clicksign-api/test_coverage)
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/clicksign/api`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
