@@ -1,8 +1,11 @@
 require 'bundler/setup'
-require 'clicksign/api'
 require 'simplecov'
 
-SimpleCov.start
+SimpleCov.start do
+  add_filter '/spec'
+end
+
+require 'clicksign/api'
 
 Dir[
   File.expand_path('../support/**/*.rb', __FILE__)
