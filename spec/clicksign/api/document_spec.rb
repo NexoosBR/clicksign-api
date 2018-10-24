@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Clicksign::API::Document do
-  let(:pdf) { file_fixture('pdf-sample.pdf') }
-  let(:png) { file_fixture('1px.png') }
+  let(:file) { file_fixture('pdf-sample.pdf') }
 
   describe '.create' do
     context 'a valid request' do
@@ -11,7 +10,7 @@ RSpec.describe Clicksign::API::Document do
           VCR.use_cassette('Clicksign::API::Document.create/basic-request') do
             described_class.create(
               path: '/teste/teste.pdf',
-              file: pdf
+              file: file
             )
           end
         end
@@ -24,7 +23,7 @@ RSpec.describe Clicksign::API::Document do
           VCR.use_cassette('Clicksign::API::Document.create/complete-request') do
             described_class.create(
               path: '/teste/teste.pdf',
-              file: pdf,
+              file: file,
               signers: [
                 {
                   email: 'francisco@nexoos.com.br',
@@ -49,7 +48,7 @@ RSpec.describe Clicksign::API::Document do
           VCR.use_cassette('Clicksign::API::Document.create/invalid-path') do
             described_class.create(
               path: '/teste',
-              file: png
+              file: file
             )
           end
         end
@@ -65,7 +64,7 @@ RSpec.describe Clicksign::API::Document do
 
       let(:response) do
         VCR.use_cassette('Clicksign::API::Document.create/invalid-token') do
-          described_class.create(path: '/teste/teste.pdf', file: pdf)
+          described_class.create(path: '/teste/teste.pdf', file: file)
         end
       end
 
