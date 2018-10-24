@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox.clicksign.com/api/v1/documents?access_token=CLICKSIGN_ACCESS_TOKEN
+    uri: https://sandbox.clicksign.com/api/v1/documents/?access_token=CLICKSIGN_ACCESS_TOKEN
     body:
       encoding: UTF-8
       string: '{"document":{"path":"/teste","content_base64":"data:application/pdf;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR4nGNi\nAAAABgADNjd8qAAAAABJRU5ErkJggg==\n"}}'
@@ -21,7 +21,7 @@ http_interactions:
       message: Unprocessable Entity
     headers:
       Date:
-      - Tue, 23 Oct 2018 21:45:43 GMT
+      - Wed, 24 Oct 2018 17:11:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -37,13 +37,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 3adffefb-9cd9-453a-a821-9861cb422476
+      - 875fb08e-254c-4ac6-8999-d84a5b26fe6c
       X-Runtime:
-      - '0.020190'
+      - '0.031148'
     body:
       encoding: ASCII-8BIT
       string: !binary |-
         eyJlcnJvcnMiOlsiTm9tZSBkbyBhcnF1aXZvIG7Do28gY29udMOpbSBtaW1ldHlwZSB2w6FsaWRvIl19
-    http_version: 
-  recorded_at: Tue, 23 Oct 2018 21:45:44 GMT
+    http_version:
+  recorded_at: Wed, 24 Oct 2018 17:11:45 GMT
 recorded_with: VCR 4.0.0

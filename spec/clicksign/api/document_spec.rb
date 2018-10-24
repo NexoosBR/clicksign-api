@@ -4,49 +4,57 @@ RSpec.describe Clicksign::API::Document, vcr: true do
   let(:pdf) { file_fixture('pdf-sample.pdf') }
   let(:png) { file_fixture('1px.png') }
 
-  let(:deadline_at) { '2018-06-28T14:30:59-03:00' }
-  let(:auto_close) { false }
-  let(:locale) { 'en-US' }
-
   describe '.create' do
-    context 'basic valid request' do
-      it 'creates a document with required attributes' do
-        response = described_class.create(
-          path: '/teste/teste.pdf',
-          file: pdf
-        )
+    context 'a valid request' do
+      context 'with only required parameters' do
+        let(:response) do
+          VCR.use_cassette('Clicksign::API::Document.create/basic-request') do
+            described_class.create(
+              path: '/teste/teste.pdf',
+              file: pdf
+            )
+          end
+        end
 
-        expect(response[:key]).to eq('5c06f555-7e3a-48b1-9f10-759406847076')
+        it { expect(json[:document][:key]).to eq('ae7618d4-3958-4d7d-ade3-59def0d1288d') }
       end
 
-      it 'creates a document with all attributes' do
-        response = described_class.create(
-          path: '/teste/teste.pdf',
-          file: pdf,
-          signers: [
-            {
-              email: 'francisco@nexoos.com.br',
-              sign_as: 'sign',
-              auths: 'email'
-            }
-          ],
-          deadline_at: deadline_at,
-          auto_close: auto_close,
-          locale: locale
-        )
+      context 'with all available parameters' do
+        let(:response) do
+          VCR.use_cassette('Clicksign::API::Document.create/complete-request') do
+            described_class.create(
+              path: '/teste/teste.pdf',
+              file: pdf,
+              signers: [
+                {
+                  email: 'francisco@nexoos.com.br',
+                  sign_as: 'sign',
+                  auths: 'email'
+                }
+              ],
+              deadline_at: '2018-06-28T14:30:59-03:00',
+              auto_close: false,
+              locale: 'en-US'
+            )
+          end
+        end
 
-        expect(response[:key]).to eq('300321ef-6dc0-4b56-b0f4-9a750cb8169a')
+        it { expect(json[:document][:key]).to eq('de3b4892-4cab-45f3-b84c-b0fb58b2d3e6') }
       end
     end
 
-    context 'request with invalid params' do
-      it "can't create a invalid path" do
-        response = described_class.create(
-          path: '/teste',
-          file: png
-        )
+    context 'request with error' do
+      context 'invalid path error' do
+        let(:response) do
+          VCR.use_cassette('Clicksign::API::Document.create/invalid-path') do
+            described_class.create(
+              path: '/teste',
+              file: png
+            )
+          end
+        end
 
-        expect(response).to eq(['Nome do arquivo não contém mimetype válido'])
+        it { expect(json[:errors]).to eq(['Nome do arquivo não contém mimetype válido']) }
       end
     end
 
@@ -55,14 +63,13 @@ RSpec.describe Clicksign::API::Document, vcr: true do
         allow(Clicksign::API).to receive(:access_token).and_return('123')
       end
 
-      it 'needs a valid access token' do
-        response = described_class.create(
-          path: '/teste/teste.pdf',
-          file: pdf
-        )
-
-        expect(response).to eq(['Access Token inválido'])
+      let(:response) do
+        VCR.use_cassette('Clicksign::API::Document.create/invalid-token') do
+          described_class.create(path: '/teste/teste.pdf', file: pdf)
+        end
       end
+
+      it { expect(json[:errors]).to eq(['Access Token inválido']) }
     end
   end
 end
