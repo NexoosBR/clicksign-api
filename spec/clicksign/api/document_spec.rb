@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Clicksign::API::Document, vcr: true do
+RSpec.describe Clicksign::API::Document do
   let(:pdf) { file_fixture('pdf-sample.pdf') }
   let(:png) { file_fixture('1px.png') }
 
@@ -70,6 +70,28 @@ RSpec.describe Clicksign::API::Document, vcr: true do
       end
 
       it { expect(json[:errors]).to eq(['Access Token inválido']) }
+    end
+  end
+
+  describe '.find' do
+    context 'valid key' do
+      let(:response) do
+        VCR.use_cassette('Clicksign::API::Document.find/valid-key') do
+          described_class.find('ae7618d4-3958-4d7d-ade3-59def0d1288d')
+        end
+      end
+
+      it { expect(json[:document][:key]).to eq('ae7618d4-3958-4d7d-ade3-59def0d1288d') }
+    end
+
+    context 'invalid key' do
+      let(:response) do
+        VCR.use_cassette('Clicksign::API::Document.find/invalid-key') do
+          described_class.find('WRONG')
+        end
+      end
+
+      it { expect(json[:errors]).to eq(['Documento não encontrado']) }
     end
   end
 end

@@ -9,6 +9,13 @@ module Clicksign
         end
       end
 
+      def get(request_path)
+        conn.get do |req|
+          req.url request_path, { access_token: Clicksign::API.access_token }
+          req.headers['Content-Type'] = 'application/json'
+        end
+      end
+
       def conn
         @conn ||= Faraday.new(url: Clicksign::API.url)
       end

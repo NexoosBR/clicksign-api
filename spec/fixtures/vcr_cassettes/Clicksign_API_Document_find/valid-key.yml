@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.clicksign.com/api/v1/documents/ae7618d4-3958-4d7d-ade3-59def0d1288d?access_token=CLICKSIGN_ACCESS_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 24 Oct 2018 17:59:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"f93670bc3ebc3e7590075d05bfa1b703"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 31cf8f5f-3cc1-4aeb-8915-668374c18005
+      X-Runtime:
+      - '0.039897'
+    body:
+      encoding: UTF-8
+      string: '{"document":{"key":"ae7618d4-3958-4d7d-ade3-59def0d1288d","path":"/teste/teste.pdf","filename":"teste.pdf","uploaded_at":"2018-10-24T17:11:42.708Z","updated_at":"2018-10-24T17:11:45.133Z","finished_at":null,"deadline_at":"2018-11-24T01:59:00.000Z","status":"running","auto_close":true,"locale":"pt-BR","downloads":{"original_file_url":"https://clicksign-content-sandbox.s3.amazonaws.com/2018/10/24/17/11/42/f464ce58-6589-4eef-89b5-56ad5c120c59/file.pdf?X-Amz-Expires=302\u0026X-Amz-Date=20181024T175938Z\u0026X-Amz-Security-Token=FQoGZXIvYXdzEP///////////wEaDL8CKeSfv9cmsire2CK3A/pujnGFRLFmHML8V8bXAH9SInwCtr%2Bo4mKhRfZuoJdFEG001W3GB%2B6Fg/frmHJPQY/pcgt2%2BBpE7ioNwYjVD3SJkRbAWvw3HA0nn5f9eRJ8t8WAR%2B8Qg0tE3XxljllnKPXV4JV3904qLCMBWu4J5SV164xQN0MplkxZTqbltw/R%2B5XnhcOjzWVZ5p3Bb6TrfkIfQcaMgSKdNVTaUAFPD3pVbB47rovwgnLasxNkhuckQY1Ie0fh4U5HdyZf04dsY5KWIrbeStoptDZ7nJ9zs1t5T6/aahPlNVKjKpUXeB9JkcIco3zzmm2thJKLpJrI%2B4de4tr0fnhdxxmdVxFEkZzG78n%2BmNrylc7cZujKme62PC4WprJjWYDQUOFqgqf1sjG3CM9qkqRuTcfrQZGEyem7ilU1DBj5bZIblaGM0H3w9dcH2etT4QIqcnbv1XktUHKn%2BqsS%2BQ/zp44XWOfRaEUPRikcbCFvssexmNintUQA%2BwOvRluJTVL5WJc9w7x6cwG0QVeUXRKztMIoZHfbFlrT/%2BoMQCZP7lcl13YIfBxr7OybZ07l7O33yskI7M9/6aqClqiz6U8ohPTB3gU%3D\u0026X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=ASIA2ERYHIYDXLKBWMGJ/20181024/us-east-1/s3/aws4_request\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=9d85843db5a9bf87fb6fb91906bc94764f715eee89b4b2509636efd730e42398"},"signers":[],"events":[{"name":"upload","data":{"user":{"email":"dev@nexoos.com.br","name":"Nexoos
+        do Brasil LTDA"},"account":{"key":"7fca3b0f-1667-4aae-8ebb-181bea0987d2"},"deadline_at":"2018-11-23T23:59:00.000-02:00","auto_close":true,"locale":"pt-BR"},"occurred_at":"2018-10-24T17:11:42.727Z"}]}}'
+    http_version: 
+  recorded_at: Wed, 24 Oct 2018 17:59:40 GMT
+recorded_with: VCR 4.0.0

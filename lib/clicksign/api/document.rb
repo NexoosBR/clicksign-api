@@ -10,6 +10,10 @@ module Clicksign
           post(REQUEST_PATH, body(params))
         end
 
+        def find(key)
+          get(REQUEST_PATH + key)
+        end
+
         def body(params)
           document = [:path, :deadline_at, :auto_close, :locale, :signers].each.with_object({}) do |key, hash|
             hash[key] = params[key] if params.has_key?(key)
