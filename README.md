@@ -5,10 +5,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e4c11dd4129d37ee34c/maintainability)](https://codeclimate.com/github/NexoosBR/clicksign-api/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e4c11dd4129d37ee34c/test_coverage)](https://codeclimate.com/github/NexoosBR/clicksign-api/test_coverage)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/clicksign/api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -25,9 +21,67 @@ Or install it yourself as:
 
     $ gem install clicksign-api
 
-## Usage
+## Setup:
 
-TODO: Write usage instructions here
+By default, all requests use Clicksign's SANDBOX.
+
+```ruby
+Clicksign::API.configure do |config|
+  config.access_token = ENV['CLICKSIGN_ACCESS_TOKEN']
+end
+```
+
+To use PRODUCTION environment, you have to setup:
+
+```ruby
+Clicksign::API.configure do |config|
+  config.access_token = ENV['CLICKSIGN_ACCESS_TOKEN']
+  config.production = true
+end
+```
+
+## Usage:
+
+To see all available parameters, please, check the [API docs](https://developers.clicksign.com/docs/informacoes-gerais).
+
+#### Create documents
+
+```ruby
+response = Clicksign::API::Document.create(path: '/path/to/file.pdf', file: file)
+=> #<Faraday::Response ...>
+
+response.success?
+=> true # false
+
+JSON.parse(response.body)
+=> {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
+```
+
+#### View documents
+
+```ruby
+response = Clicksign::API::Document.find('DOCUMENT_KEY')
+=> #<Faraday::Response ...>
+
+response.success?
+=> true # false
+
+JSON.parse(response.body)
+=> {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
+```
+
+#### Add signers
+
+```ruby
+response = Clicksign::API::Signer.create('DOCUMENT_KEY', signer)
+=> #<Faraday::Response ...>
+
+response.success?
+=> true # false
+
+JSON.parse(response.body)
+=> {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
+```
 
 ## Development
 
