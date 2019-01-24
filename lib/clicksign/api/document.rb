@@ -16,8 +16,8 @@ module Clicksign
         end
 
         def body(params)
-          document = ATTRIBUTES.each.with_object({}) do |key, hash|
-            hash[key] = params[key] if params.has_key?(key)
+          document = ATTRIBUTES.each.with_object({}) do |attribute, hash|
+            hash[attribute] = params[attribute] if params.has_key?(attribute)
           end
 
           if params.has_key?(:file)

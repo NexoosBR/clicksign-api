@@ -3,7 +3,7 @@ module Clicksign
     class Signer
       extend Requests
 
-      REQUEST_PATH = '/api/v1/documents/_KEY_/signers/'
+      REQUEST_PATH = '/api/v1/documents/:key/signers/'
       ATTRIBUTES = [
         :email, :sign_as, :auths, :name, :documentation, :birthday,
         :has_documentation, :phone_number, :send_email, :message, :url
@@ -18,7 +18,9 @@ module Clicksign
         end
 
         def path_for(document_key)
-          REQUEST_PATH.dup.gsub('_KEY_', document_key)
+          REQUEST_PATH.dup.tap do |path|
+            path[':key'] = document_key
+          end
         end
 
         def body(params)
