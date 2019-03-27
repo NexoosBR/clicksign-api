@@ -3,21 +3,15 @@ module Clicksign
     class Notifier
       extend Requests
 
-      REQUEST_PATH = '/api/v1/signers/:key/notify'
-      ATTRIBUTES = [:message]
+      REQUEST_PATH = '/api/v1/notifications'
+      ATTRIBUTES = [:request_signature_key, :message, :url]
 
       class << self
-        def notify(document_key, params = {})
+        def notify(params = {})
           post(
-            path_for(document_key),
+            REQUEST_PATH,
             body(params)
           )
-        end
-
-        def path_for(document_key)
-          REQUEST_PATH.dup.tap do |path|
-            path[':key'] = document_key
-          end
         end
 
         def body(params)

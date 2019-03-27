@@ -11,6 +11,7 @@ end
 
 require "clicksign/api/requests"
 require "clicksign/api/document"
+require "clicksign/api/documents_signers"
 require "clicksign/api/signer"
 require "clicksign/api/notifier"
 

@@ -4,7 +4,7 @@ module Clicksign
       extend Requests
 
       REQUEST_PATH = '/api/v1/documents/'
-      ATTRIBUTES = [:path, :deadline_at, :auto_close, :locale, :signers]
+      ATTRIBUTES = [:path, :deadline_at, :auto_close, :locale]
 
       class << self
         def create(params = {})

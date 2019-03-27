@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Clicksign::API::Signer do
+RSpec.describe Clicksign::API::Notifier do
   describe '.body' do
     let(:params) {
       {
@@ -14,22 +14,16 @@ RSpec.describe Clicksign::API::Signer do
         delivery: 'delivery',
         message: 'message',
         url: 'url',
-        invalid: 'invalid'
+        invalid: 'invalid',
+        request_signature_key: 'request_signature_key'
       }
     }
 
     let(:expected) {
       {
-        signer: {
-          email: 'email',
-          auths: ['auths'],
-          name: 'name',
-          documentation: 'documentation',
-          birthday: 'birthday',
-          has_documentation: 'has_documentation',
-          phone_number: 'phone_number',
-          delivery: 'delivery'
-        }
+        request_signature_key: 'request_signature_key',
+        message: 'message',
+        url: 'url'
       }
     }
 
@@ -40,22 +34,20 @@ RSpec.describe Clicksign::API::Signer do
     }
   end
 
-  describe '.create' do
+  describe '.notify' do
     context 'valid document key and params' do
       context 'single signer' do
         let(:response) do
-          VCR.use_cassette('Clicksign::API::Signer.create/basic-request') do
-            described_class.create(
+          VCR.use_cassette('Clicksign::API::Notifier.notify/basic-request') do
+            described_class.notify(
               {
-                email: 'francisco+teste@nexoos.com.br',
-                auths: ['email'],
-                delivery: 'email'
+                request_signature_key: '793a0f7d-86cf-4bba-817b-86cd30b68ea0'
               }
             )
           end
         end
 
-        it { expect(json[:signer][:key]).to eq('6fa5fc10-dcbe-4bae-a361-0350ea44fb5d') }
+        it { expect(response.status).to eq(202) }
       end
     end
   end

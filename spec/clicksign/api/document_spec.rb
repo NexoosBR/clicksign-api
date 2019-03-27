@@ -24,21 +24,14 @@ RSpec.describe Clicksign::API::Document do
             described_class.create(
               path: '/teste/teste.pdf',
               file: file,
-              signers: [
-                {
-                  email: 'francisco@nexoos.com.br',
-                  sign_as: 'sign',
-                  auths: 'email'
-                }
-              ],
-              deadline_at: '2018-06-28T14:30:59-03:00',
+              deadline_at: '2019-03-28T14:30:59-03:00',
               auto_close: false,
               locale: 'en-US'
             )
           end
         end
 
-        it { expect(json[:document][:key]).to eq('de3b4892-4cab-45f3-b84c-b0fb58b2d3e6') }
+        it { expect(json[:document][:key]).to eq('28343efd-dccb-4e7a-9989-49e792b3c266') }
       end
     end
 
@@ -76,11 +69,11 @@ RSpec.describe Clicksign::API::Document do
     context 'valid key' do
       let(:response) do
         VCR.use_cassette('Clicksign::API::Document.find/valid-key') do
-          described_class.find('ae7618d4-3958-4d7d-ade3-59def0d1288d')
+          described_class.find('28343efd-dccb-4e7a-9989-49e792b3c266')
         end
       end
 
-      it { expect(json[:document][:key]).to eq('ae7618d4-3958-4d7d-ade3-59def0d1288d') }
+      it { expect(json[:document][:key]).to eq('28343efd-dccb-4e7a-9989-49e792b3c266') }
     end
 
     context 'invalid key' do
