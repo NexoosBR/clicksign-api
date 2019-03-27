@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.clicksign.com/api/v1/lists/?access_token=CLICKSIGN_ACCESS_TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"list":{"document_key":"9021bc64-1d76-464b-b5f6-fd2b88689151","signer_key":"9cf90864-9852-4c81-a844-b7f7ebfbf4bf","sign_as":"party"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Wed, 27 Mar 2019 14:00:25 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"2f51aeb02a0f9eeb79142dbac0c976de"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 74d56cc6-5550-454e-b7a0-edf13adef1d9
+      X-Runtime:
+      - '0.132462'
+    body:
+      encoding: UTF-8
+      string: '{"list":{"key":"178a3ab2-3c06-4431-975a-86b0b99d51c5","request_signature_key":"793a0f7d-86cf-4bba-817b-86cd30b68ea0","document_key":"9021bc64-1d76-464b-b5f6-fd2b88689151","signer_key":"9cf90864-9852-4c81-a844-b7f7ebfbf4bf","sign_as":"party","created_at":"2019-03-27T11:00:25.645-03:00","updated_at":"2019-03-27T11:00:25.645-03:00","url":"https://sandbox.clicksign.com/sign/793a0f7d-86cf-4bba-817b-86cd30b68ea0"}}'
+    http_version: 
+  recorded_at: Wed, 27 Mar 2019 14:00:25 GMT
+recorded_with: VCR 4.0.0

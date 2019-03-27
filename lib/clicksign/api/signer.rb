@@ -5,7 +5,7 @@ module Clicksign
 
       REQUEST_PATH = '/api/v1/signers/'
       ATTRIBUTES = [
-        :email, :sign_as, :auths, :name, :documentation, :birthday,
+        :email, :auths, :name, :documentation, :birthday,
         :has_documentation, :phone_number, :delivery
       ]
 
