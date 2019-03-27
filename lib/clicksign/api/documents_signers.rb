@@ -1,12 +1,11 @@
 module Clicksign
   module API
-    class Signer
+    class DocumentsSigners
       extend Requests
 
-      REQUEST_PATH = '/api/v1/signers/'
+      REQUEST_PATH = '/api/v1/lists/'
       ATTRIBUTES = [
-        :email, :sign_as, :auths, :name, :documentation, :birthday,
-        :has_documentation, :phone_number, :delivery
+        :document_key, :signer_key, :sign_as
       ]
 
       class << self
@@ -17,12 +16,18 @@ module Clicksign
           )
         end
 
+        def batch_create(batch)
+          batch.map do |params|
+            create(params)
+          end
+        end
+
         def body(params)
-          signer = ATTRIBUTES.each.with_object({}) do |key, hash|
+          list = ATTRIBUTES.each.with_object({}) do |key, hash|
             hash[key] = params[key] if params.has_key?(key)
           end
 
-          body = { signer: signer }
+          body = { list: list }
         end
       end
     end
