@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    clicksign-api (0.0.3)
+    clicksign-api (1.0.0)
       faraday
 
 GEM
