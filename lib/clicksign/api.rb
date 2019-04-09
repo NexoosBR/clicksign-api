@@ -10,6 +10,7 @@ rescue LoadError
 end
 
 require "clicksign/api/requests"
+require "clicksign/api/batch"
 require "clicksign/api/document"
 require "clicksign/api/documents_signers"
 require "clicksign/api/signer"
