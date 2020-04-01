@@ -15,6 +15,7 @@ require "clicksign/api/document"
 require "clicksign/api/documents_signers"
 require "clicksign/api/signer"
 require "clicksign/api/notifier"
+require "clicksign/api/whatsapp_notifier"
 
 
 module Clicksign
