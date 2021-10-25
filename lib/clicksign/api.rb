@@ -2,10 +2,12 @@ require "clicksign/api/version"
 
 require "faraday"
 require "base64"
+require "json"
 
 begin
   require "dotenv/load"
   require "byebug"
+  require 'pry'
 rescue LoadError
 end
 
