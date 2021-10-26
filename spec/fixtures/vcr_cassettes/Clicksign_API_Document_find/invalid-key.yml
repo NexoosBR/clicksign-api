@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.clicksign.com/api/v1/documents/123?access_token=123
+    uri: https://sandbox.clicksign.com/api/v1/documents/123?access_token=CLICKSIGN_ACCESS_TOKEN
     body:
       encoding: US-ASCII
       string: ''
@@ -17,15 +17,15 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 403
-      message: Forbidden
+      code: 404
+      message: Not Found
     headers:
       Date:
-      - Tue, 26 Oct 2021 18:29:37 GMT
+      - Tue, 26 Oct 2021 19:07:16 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '37'
+      - '40'
       Connection:
       - keep-alive
       Server:
@@ -45,23 +45,23 @@ http_interactions:
       Vary:
       - Accept
       X-Rate-Limit:
-      - '20'
+      - '50'
       X-Rate-Limit-Remaining:
-      - '19'
+      - '49'
       X-Rate-Limit-Reset:
-      - '1635272980'
+      - '1635275240'
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 51f9c469-2991-4eb7-bcc0-1d45f968f9b1
+      - 8b51a7ac-939c-4835-b84f-030a2b63fa5e
       X-Runtime:
-      - '0.005574'
+      - '0.031207'
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJlcnJvcnMiOlsiQWNjZXNzIFRva2VuIGludsOhbGlkbyJdfQ==
+        eyJlcnJvcnMiOlsiRG9jdW1lbnRvIG7Do28gZW5jb250cmFkbyJdfQ==
     http_version: 
-  recorded_at: Tue, 26 Oct 2021 18:29:37 GMT
+  recorded_at: Tue, 26 Oct 2021 19:07:16 GMT
 recorded_with: VCR 4.0.0
