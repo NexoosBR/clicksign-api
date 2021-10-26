@@ -19,7 +19,7 @@ module Clicksign
 
         def batch_create(token:, batch:)
           batch.map do |params|
-            create(token, params)
+            create(token: token, params: params)
           end
         end
 
