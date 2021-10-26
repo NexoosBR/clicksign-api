@@ -9,16 +9,17 @@ module Clicksign
       ]
 
       class << self
-        def create(params)
+        def create(token:, params: {})
           post(
             REQUEST_PATH,
-            body(params)
+            body(params),
+            token
           )
         end
 
-        def batch_create(batch)
+        def batch_create(token:, batch:)
           batch.map do |params|
-            create(params)
+            create(token, params)
           end
         end
 

@@ -91,7 +91,10 @@ RSpec.describe Clicksign::API::Document do
     context 'invalid key' do
       let(:response) do
         VCR.use_cassette('Clicksign::API::Document.find/invalid-key') do
-          described_class.find('WRONG')
+          described_class.find(
+            token: 'invalid_token',
+            key: 'WRONG',
+          )
         end
       end
 

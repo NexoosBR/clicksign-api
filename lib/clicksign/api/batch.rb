@@ -7,10 +7,11 @@ module Clicksign
       ATTRIBUTES = [:signer_key, :document_keys, :summary]
 
       class << self
-        def create(params = {})
+        def create(token:, params:  {})
           post(
             REQUEST_PATH,
-            body(params)
+            body(params),
+            token,
           )
         end
 

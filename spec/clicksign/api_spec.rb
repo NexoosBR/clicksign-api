@@ -4,7 +4,7 @@ RSpec.describe Clicksign::Api do
   end
 
   describe '.configure' do
-    let(:credentials) { { 'foo' => 'abc' } }
+    let(:credentials) { { 'valid_token' => ENV['CLICKSIGN_ACCESS_TOKEN'] } }
     
     context 'sandbox' do
       before do
@@ -13,7 +13,7 @@ RSpec.describe Clicksign::Api do
         end
       end
 
-      it { expect(Clicksign::API.credentials['foo']).to eq('abc') }
+      it { expect(Clicksign::API.credentials['valid_token']).to eq(ENV['CLICKSIGN_ACCESS_TOKEN']) }
       it { expect(Clicksign::API.url).to eq('https://sandbox.clicksign.com') }
     end
 
@@ -21,12 +21,11 @@ RSpec.describe Clicksign::Api do
       before do
         Clicksign::API.configure do |config|
           config.production = true
-          config.access_token = credentials
+          config.credentials = credentials
         end
       end
 
-      it { expect(Clicksign::API.credentials['foo']).to eq('abc') }
-      it { expect(Clicksign::API.credentials['bar']).to eq('123') }
+      it { expect(Clicksign::API.credentials['valid_token']).to eq(ENV['CLICKSIGN_ACCESS_TOKEN']) }
       it { expect(Clicksign::API.url).to eq('https://app.clicksign.com') }
     end
   end
