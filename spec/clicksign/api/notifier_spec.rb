@@ -40,6 +40,8 @@ RSpec.describe Clicksign::API::Notifier do
         let(:response) do
           VCR.use_cassette('Clicksign::API::Notifier.notify/basic-request') do
             described_class.notify(
+              token: 'valid_token',
+              params:
               {
                 request_signature_key: '793a0f7d-86cf-4bba-817b-86cd30b68ea0'
               }

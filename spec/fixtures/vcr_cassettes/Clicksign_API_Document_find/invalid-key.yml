@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.clicksign.com/api/v1/documents/WRONG?access_token=CLICKSIGN_ACCESS_TOKEN
+    uri: https://sandbox.clicksign.com/api/v1/documents/123?access_token=123
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.12.2
+      - Faraday v1.8.0
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -17,33 +17,51 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 403
+      message: Forbidden
     headers:
       Date:
-      - Wed, 24 Oct 2018 18:00:55 GMT
+      - Tue, 26 Oct 2021 18:29:37 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '37'
       Connection:
       - keep-alive
+      Server:
+      - nginx
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Rate-Limit:
+      - '20'
+      X-Rate-Limit-Remaining:
+      - '19'
+      X-Rate-Limit-Reset:
+      - '1635272980'
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 950f11d1-2b8d-4494-b13a-6568bdb3a9f2
+      - 51f9c469-2991-4eb7-bcc0-1d45f968f9b1
       X-Runtime:
-      - '0.026093'
+      - '0.005574'
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJlcnJvcnMiOlsiRG9jdW1lbnRvIG7Do28gZW5jb250cmFkbyJdfQ==
+        eyJlcnJvcnMiOlsiQWNjZXNzIFRva2VuIGludsOhbGlkbyJdfQ==
     http_version: 
-  recorded_at: Wed, 24 Oct 2018 18:00:55 GMT
+  recorded_at: Tue, 26 Oct 2021 18:29:37 GMT
 recorded_with: VCR 4.0.0

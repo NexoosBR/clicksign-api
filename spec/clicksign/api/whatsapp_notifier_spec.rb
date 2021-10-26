@@ -38,6 +38,8 @@ RSpec.describe Clicksign::API::WhatsappNotifier do
         let(:response) do
           VCR.use_cassette('Clicksign::API::WhatsappNotifier.notify/basic-request') do
             described_class.notify(
+              token: 'valid_token',
+              params:
               {
                 request_signature_key: '6ebb594d-c414-4e66-b513-27536ecf526e'
               }

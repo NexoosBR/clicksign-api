@@ -92,13 +92,13 @@ RSpec.describe Clicksign::API::Document do
       let(:response) do
         VCR.use_cassette('Clicksign::API::Document.find/invalid-key') do
           described_class.find(
-            token: 'invalid_token',
-            key: 'WRONG',
+            # token: 'invalid_token',
+            key: '123'
           )
         end
       end
 
-      it { expect(json[:errors]).to eq(['Documento não encontrado']) }
+      it {byebug expect(json[:errors]).to eq(['Documento não encontrado']) }
     end
   end
 end

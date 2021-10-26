@@ -7,10 +7,11 @@ module Clicksign
       ATTRIBUTES = [:request_signature_key, :message, :url]
 
       class << self
-        def notify(params = {})
+        def notify(token:, params: {})
           post(
             REQUEST_PATH,
-            body(params)
+            body(params),
+            token
           )
         end
 

@@ -46,6 +46,8 @@ RSpec.describe Clicksign::API::Signer do
         let(:response) do
           VCR.use_cassette('Clicksign::API::Signer.create/basic-request') do
             described_class.create(
+              token: 'valid_token',
+              params:
               {
                 email: 'francisco+teste@nexoos.com.br',
                 auths: ['email'],
