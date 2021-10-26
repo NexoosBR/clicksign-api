@@ -7,12 +7,12 @@ module Clicksign
       ATTRIBUTES = [:path, :deadline_at, :auto_close, :locale]
 
       class << self
-        def create(params = {})
-          post(REQUEST_PATH, body(params))
+        def create(token:, params: {})
+          post(REQUEST_PATH, body(params), token)
         end
 
-        def find(key)
-          get(REQUEST_PATH + key)
+        def find(token:, key:)
+          get(REQUEST_PATH + key, token)
         end
 
         def body(params)

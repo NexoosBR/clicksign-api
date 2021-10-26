@@ -9,8 +9,11 @@ RSpec.describe Clicksign::API::Document do
         let(:response) do
           VCR.use_cassette('Clicksign::API::Document.create/basic-request') do
             described_class.create(
-              path: '/teste/teste.pdf',
-              file: file
+              token: 'valid_token',
+              params: {
+                path: '/teste/teste.pdf',
+                file: file,
+              }
             )
           end
         end
@@ -22,11 +25,14 @@ RSpec.describe Clicksign::API::Document do
         let(:response) do
           VCR.use_cassette('Clicksign::API::Document.create/complete-request') do
             described_class.create(
-              path: '/teste/teste.pdf',
-              file: file,
-              deadline_at: '2019-03-28T14:30:59-03:00',
-              auto_close: false,
-              locale: 'en-US'
+              token: 'valid_token',
+              params: {
+                path: '/teste/teste.pdf',
+                file: file,
+                deadline_at: '2019-03-28T14:30:59-03:00',
+                auto_close: false,
+                locale: 'en-US'
+              }
             )
           end
         end
@@ -40,8 +46,11 @@ RSpec.describe Clicksign::API::Document do
         let(:response) do
           VCR.use_cassette('Clicksign::API::Document.create/invalid-path') do
             described_class.create(
-              path: '/teste',
-              file: file
+              token: 'valid_token',
+              params: {
+                path: '/teste',
+                file: file
+              }
             )
           end
         end
@@ -51,13 +60,15 @@ RSpec.describe Clicksign::API::Document do
     end
 
     context 'request with invalid access_token' do
-      before do
-        allow(Clicksign::API).to receive(:access_token).and_return('123')
-      end
-
       let(:response) do
         VCR.use_cassette('Clicksign::API::Document.create/invalid-token') do
-          described_class.create(path: '/teste/teste.pdf', file: file)
+          described_class.create(
+            token: 'invalid_token',
+            params: {
+              path: '/teste/teste.pdf',
+              file: file,
+            }
+          )
         end
       end
 
@@ -69,7 +80,8 @@ RSpec.describe Clicksign::API::Document do
     context 'valid key' do
       let(:response) do
         VCR.use_cassette('Clicksign::API::Document.find/valid-key') do
-          described_class.find('28343efd-dccb-4e7a-9989-49e792b3c266')
+          described_class.find(token: 'valid_token', 
+                               key: '28343efd-dccb-4e7a-9989-49e792b3c266')
         end
       end
 
