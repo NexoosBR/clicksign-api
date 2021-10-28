@@ -5,7 +5,7 @@ require "clicksign/api/version"
 
 Gem::Specification.new do |spec|
   spec.name          = 'clicksign-api'
-  spec.version       = Clicksign::Api::VERSION
+  spec.version       = Clicksign::API::VERSION
   spec.authors       = ['Francisco Martins']
   spec.email         = ['franciscomxs@gmail.com']
 
