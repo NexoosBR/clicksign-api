@@ -54,13 +54,13 @@ To see all available parameters, please, check the [API docs](https://developers
 
 ```ruby
 file = File.open('/path/to/file/local/file.pdf', 'r')
-response = Clicksign::API::Document.create( params: { path: '/path/to/file/on/clicksign.pdf', file: file }, token: 'valid_token')
+document = Clicksign::API::Document.create( params: { path: '/path/to/file/on/clicksign.pdf', file: file }, token: 'valid_token')
 => #<Faraday::Response ...>
 
-response.success?
+document.success?
 => true # false
 
-JSON.parse(response.body)
+response_document = JSON.parse(document.body)
 => {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
 => # key: '123abcd' as example!
 ```
@@ -68,26 +68,26 @@ JSON.parse(response.body)
 #### View documents
 
 ```ruby
-response = Clicksign::API::Document.find(params: { key: '123abcd' }, token: 'valid_token')
+find_document = Clicksign::API::Document.find(params: { key: response_document['document']['key'] }, token: 'valid_token')
 => #<Faraday::Response ...>
 
-response.success?
+find_document.success?
 => true # false
 
-JSON.parse(response.body)
+JSON.parse(find_document.body)
 => {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
 ```
 
 #### Create Signers
 
 ```ruby
-response = Clicksign::API::Signer.create(params: { email: 'mail@email.com', auths: ['email'], delivery: 'email' }, token: 'valid_token')
+signer = Clicksign::API::Signer.create(params: { email: 'mail@email.com', auths: ['email'], delivery: 'email' }, token: 'valid_token')
 => #<Faraday::Response ...>
 
-response.success?
+signer.success?
 => true # false
 
-JSON.parse(response.body)
+response_signer = JSON.parse(signer.body)
 => {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
 => # signer_key: '999poo' as example!
 ```
@@ -95,13 +95,13 @@ JSON.parse(response.body)
 
 ```ruby
 
-Clicksign::API::DocumentsSigners.create(params: { document_key: '123abcd', signer_key: '999poo', sign_as: 'sign_as' }, token: 'valid_token')
+signer_document = Clicksign::API::DocumentsSigners.create(params: { document_key: response_document['document']['key'], signer_key: response_signer['key'], sign_as: 'sign_as' }, token: 'valid_token')
 => #<Faraday::Response ...>
 
-response.success?
+signer_document.success?
 => true # false
 
-JSON.parse(response.body)
+response_signer_document = JSON.parse(signer_document.body)
 => {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
   ```
 
@@ -109,13 +109,13 @@ JSON.parse(response.body)
 
 ```ruby
 
-batch = Clicksign::API::Batch.create(params: { document_keys: ['123abcd', 'other_document_key'], signer_key: '999poo', summary: true}, token: 'valid_token')
+batch = Clicksign::API::Batch.create(params: { document_keys: [response_document['document']['key'], 'other_document_key'], signer_key: response_signer['key'], summary: true}, token: 'valid_token')
 => #<Faraday::Response ...>
 
 batch.success?
 => true # false
 
-JSON.parse(batch.body)
+rseponse_batch = JSON.parse(batch.body)
 => #{"batch"=> {"key"=>"3dd7fa89-15f7-48b6-81e8-7d14a273bbb8"
 
 ```
