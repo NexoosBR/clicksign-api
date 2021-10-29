@@ -23,17 +23,18 @@ Or install it yourself as:
 
 ## Setup:
 
-By default, all requests use Clicksign's localhost.
+By default, all requests use Clicksign's SANDBOX.
 
 ```ruby
-file_path = File.expand_path('.././spec/fixtures/credentials.yml', __FILE__)
-credentials = YAML.load(ERB.new(File.read(file_path)).result)
+credentials = {
+  "key.production" => ENV["CLICKSIGN_ACCESS_TOKEN_PRODUCTION"]
+  "key.sandbox" => ENV["CLICKSIGN_ACCESS_TOKEN_SANDBOX"]
+}
 
 Clicksign::API.configure do |config|
   config.credentials = credentials
   config.production = false
 end
-
 ```
 
 To use PRODUCTION environment, you have to setup:
@@ -53,7 +54,7 @@ To see all available parameters, please, check the [API docs](https://developers
 
 ```ruby
 file = File.open('/path/to/file/local/file.pdf', 'r')
-response = Clicksign::API::Document.create( params: { path: '/path/to/file/on/clicksign.pdf', file: file }, token: 'valid_token'
+response = Clicksign::API::Document.create( params: { path: '/path/to/file/on/clicksign.pdf', file: file }, token: 'valid_token')
 => #<Faraday::Response ...>
 
 response.success?
@@ -67,7 +68,7 @@ JSON.parse(response.body)
 #### View documents
 
 ```ruby
-response = Clicksign::API::Document.find(key: '123abcd', token: 'valid_token')
+response = Clicksign::API::Document.find(params: { key: '123abcd' }, token: 'valid_token')
 => #<Faraday::Response ...>
 
 response.success?
