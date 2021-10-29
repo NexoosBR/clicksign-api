@@ -82,7 +82,9 @@ RSpec.describe Clicksign::API::Document do
         VCR.use_cassette('Clicksign::API::Document.find/valid-key') do
           described_class.find(
             token: 'valid_token',
-            key: '28343efd-dccb-4e7a-9989-49e792b3c266'
+            params:{
+              key: '28343efd-dccb-4e7a-9989-49e792b3c266'
+            }
           )
         end
       end
@@ -95,7 +97,9 @@ RSpec.describe Clicksign::API::Document do
         VCR.use_cassette('Clicksign::API::Document.find/invalid-key') do
           described_class.find(
             token: 'valid_token',
-            key: '123'
+            params: {
+              key: '123'
+            }
           )
         end
       end

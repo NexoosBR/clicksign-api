@@ -11,8 +11,8 @@ module Clicksign
           post(REQUEST_PATH, body(params), token)
         end
 
-        def find(token:, key:)
-          get(REQUEST_PATH + key, token)
+        def find(token:, params:)
+          get(REQUEST_PATH + params[:key], token)
         end
 
         def body(params)
