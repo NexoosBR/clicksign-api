@@ -88,8 +88,7 @@ signer.success?
 => true # false
 
 response_signer = JSON.parse(signer.body)
-=> {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
-=> # signer_key: '999poo' as example!
+=> {:signer=> {:key=> '...', :email=> '...', ... }
 ```
 #### Add Signers to Document
 
@@ -102,7 +101,7 @@ signer_document.success?
 => true # false
 
 response_signer_document = JSON.parse(signer_document.body)
-=> {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
+=> {:list=> {:key=> '...', ... }
   ```
 
 ##### Creating Documents in Batches
@@ -116,7 +115,7 @@ batch.success?
 => true # false
 
 rseponse_batch = JSON.parse(batch.body)
-=> #{"batch"=> {"key"=>"3dd7fa89-15f7-48b6-81e8-7d14a273bbb8"
+=> #{"batch"=> {"key"=>"..."
 
 ```
 #### Notifying Signer by e-mail
@@ -131,7 +130,6 @@ notify.success?
 
 JSON.parse(notify.body)
 => ##<struct Faraday::Env, method=:post request_body="{\"request_signature_key\":
-
 ```
 
 #### Notifying Signer by whatsapp
@@ -145,10 +143,6 @@ notify = Clicksign::API::Notifier.notify(params: { request_signature_key: reques
 
 notify.success?
 => true # false
-
-JSON.parse(notify.body)
-=> ##<struct Faraday::Env, method=:post request_body="{\"request_signature_key\":
-
 
 ## Development
 
