@@ -93,7 +93,6 @@ response_signer = JSON.parse(signer.body)
 #### Add Signers to Document
 
 ```ruby
-
 signer_document = Clicksign::API::DocumentsSigners.create(params: { document_key: response_document['document']['key'], signer_key: response_signer['key'], sign_as: 'sign_as' }, token: 'valid_token')
 => #<Faraday::Response ...>
 
@@ -107,8 +106,14 @@ response_signer_document = JSON.parse(signer_document.body)
 ##### Creating Documents in Batches
 
 ```ruby
-
-batch = Clicksign::API::Batch.create(params: { document_keys: [response_document['document']['key'], 'other_document_key'], signer_key: response_signer['key'], summary: true}, token: 'valid_token')
+batch = Clicksign::API::Batch.create(
+  params: {
+    document_keys: [response_document['document']['key'], 'other_document_key'],
+    signer_key: response_signer['key'],
+    summary: true
+  },
+  token: 'valid_token'
+)
 => #<Faraday::Response ...>
 
 batch.success?
@@ -116,13 +121,11 @@ batch.success?
 
 rseponse_batch = JSON.parse(batch.body)
 => #{"batch"=> {"key"=>"..."
-
 ```
 #### Notifying Signer by e-mail
 
 ```ruby
-request_signature_key = JSON.parse(response_document_above.body)['document']['signers'].first['request_signature_key']
-notify = Clicksign::API::Notifier.notify(params: { request_signature_key: request_signature_key }, token: 'valid_token')
+notify = Clicksign::API::Notifier.notify(params: { request_signature_key: 'request_signature_key' }, token: 'valid_token')
 => #<Faraday::Response ...>
 
 notify.success?
@@ -135,10 +138,7 @@ JSON.parse(notify.body)
 #### Notifying Signer by whatsapp
 
 ```ruby
-=> # To deliver this content, its necessary add `phone_number` on Signer
-
-request_signature_key = JSON.parse(response_document_above.body)['document']['signers'].first['request_signature_key']
-notify = Clicksign::API::Notifier.notify(params: { request_signature_key: request_signature_key }, token: 'valid_token')
+notify = Clicksign::API::Notifier.notify(params: { request_signature_key: 'request_signature_key' }, token: 'valid_token')
 => #<Faraday::Response ...>
 
 notify.success?
