@@ -24,6 +24,8 @@ module Clicksign
         end
 
         def body(params)
+          params = params.transform_keys(&:to_sym)
+
           list = ATTRIBUTES.each.with_object({}) do |key, hash|
             hash[key] = params[key] if params.has_key?(key)
           end

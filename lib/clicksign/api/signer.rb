@@ -25,7 +25,7 @@ module Clicksign
             hash[key] = params[key] if params.has_key?(key)
           end
 
-          body = { signer: signer }
+          body = { signer: signer }.to_json
         end
       end
     end
