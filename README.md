@@ -62,7 +62,7 @@ document.success?
 
 response_document = JSON.parse(document.body)
 => {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
-=> # key: '123abcd' as example!
+=> #<Faraday::Response ...>
 ```
 
 #### View documents
