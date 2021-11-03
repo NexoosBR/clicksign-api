@@ -1,7 +1,7 @@
 # Clicksign::API 1.1.0 (Octuber 29, 2021)
 
 Add support to multiple credentials.
-This is useful to work with different environments, providing flexibility.
+This is useful to work with different accounts and environments, providing flexibility.
 For example, applications have different tokens for each environment.
 Other useful case, occurs working with multiple companies.
 
