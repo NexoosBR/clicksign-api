@@ -4,18 +4,20 @@ module Clicksign
       extend Requests
 
       REQUEST_PATH = '/api/v1/documents/'
-      ATTRIBUTES = [:path, :deadline_at, :auto_close, :locale]
+      ATTRIBUTES = [:path, :deadline_at, :auto_close, :locale, :content_base64]
 
       class << self
-        def create(params = {})
-          post(REQUEST_PATH, body(params))
+        def create(token:, params: {})
+          post(REQUEST_PATH, body(params), token)
         end
 
-        def find(key)
-          get(REQUEST_PATH + key)
+        def find(token:, params:)
+          get(REQUEST_PATH + params[:key], token)
         end
 
         def body(params)
+          params = params.transform_keys(&:to_sym)
+
           document = ATTRIBUTES.each.with_object({}) do |attribute, hash|
             hash[attribute] = params[attribute] if params.has_key?(attribute)
           end

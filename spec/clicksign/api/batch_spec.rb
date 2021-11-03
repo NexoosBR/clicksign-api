@@ -48,7 +48,8 @@ RSpec.describe Clicksign::API::Batch do
         let(:response) do
           VCR.use_cassette('Clicksign::API::Batch.create/basic-request') do
             described_class.create(
-              {
+              token: 'valid_token',
+              params:{
                 document_keys: ['28343efd-dccb-4e7a-9989-49e792b3c266'],
                 signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
                 summary: true

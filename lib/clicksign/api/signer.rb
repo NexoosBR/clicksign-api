@@ -10,14 +10,17 @@ module Clicksign
       ]
 
       class << self
-        def create(params)
+        def create(token:, params:)
           post(
             REQUEST_PATH,
-            body(params)
+            body(params),
+            token
           )
         end
 
         def body(params)
+          params = params.transform_keys(&:to_sym)
+
           signer = ATTRIBUTES.each.with_object({}) do |key, hash|
             hash[key] = params[key] if params.has_key?(key)
           end

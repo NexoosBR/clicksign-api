@@ -1,17 +1,19 @@
-RSpec.describe Clicksign::Api do
+RSpec.describe Clicksign::API do
   it 'has a version number' do
-    expect(Clicksign::Api::VERSION).to eq('1.0.1')
+    expect(Clicksign::API::VERSION).to eq('1.1.0.alpha2')
   end
 
   describe '.configure' do
+    let(:credentials) { { 'valid_token' => ENV['CLICKSIGN_ACCESS_TOKEN'] } }
+    
     context 'sandbox' do
       before do
         Clicksign::API.configure do |config|
-          config.access_token = '123'
+          config.credentials = credentials
         end
       end
 
-      it { expect(Clicksign::API.access_token).to eq('123') }
+      it { expect(Clicksign::API.credentials['valid_token']).to eq(ENV['CLICKSIGN_ACCESS_TOKEN']) }
       it { expect(Clicksign::API.url).to eq('https://sandbox.clicksign.com') }
     end
 
@@ -19,11 +21,11 @@ RSpec.describe Clicksign::Api do
       before do
         Clicksign::API.configure do |config|
           config.production = true
-          config.access_token = '321'
+          config.credentials = credentials
         end
       end
 
-      it { expect(Clicksign::API.access_token).to eq('321') }
+      it { expect(Clicksign::API.credentials['valid_token']).to eq(ENV['CLICKSIGN_ACCESS_TOKEN']) }
       it { expect(Clicksign::API.url).to eq('https://app.clicksign.com') }
     end
   end

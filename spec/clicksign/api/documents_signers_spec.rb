@@ -1,4 +1,4 @@
-require 'spec_helper'
+  require 'spec_helper'
 
 RSpec.describe Clicksign::API::DocumentsSigners do
   describe '.body' do
@@ -45,7 +45,8 @@ RSpec.describe Clicksign::API::DocumentsSigners do
         let(:response) do
           VCR.use_cassette('Clicksign::API::DocumentsSigners.create/basic-request') do
             described_class.create(
-              {
+              token: 'valid_token',
+              params: {
                 document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
                 signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
                 sign_as: 'intervening'
@@ -65,27 +66,29 @@ RSpec.describe Clicksign::API::DocumentsSigners do
         let(:response) do
           VCR.use_cassette('Clicksign::API::DocumentsSigners.create/batch-request') do
             described_class.batch_create(
-              [
-                {
-                  document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
-                  signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
-                  sign_as: 'transferor'
-                },
-                {
-                  document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
-                  signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
-                  sign_as: 'transferee'
-                },
-                {
-                  document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
-                  signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
-                  sign_as: 'contractee'
-                }
-              ]
-            )
+              token: 'valid_token',
+              batch:
+                [
+                  {
+                    document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
+                    signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
+                    sign_as: 'transferor'
+                  },
+                  {
+                    document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
+                    signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
+                    sign_as: 'transferee'
+                  },
+                  {
+                    document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
+                    signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
+                    sign_as: 'contractee'
+                  }
+                ]
+              )
+            end
           end
-        end
-
+          
         it do
           expect(JSON.parse(response[0].body)["list"]["key"]).to eq('8c5cf01d-09d2-474c-b9a1-b4ef6bc1b603')
           expect(JSON.parse(response[1].body)["list"]["key"]).to eq('4add9d39-54cb-44f3-88be-fb67ab45b0be')

@@ -9,20 +9,23 @@ module Clicksign
       ]
 
       class << self
-        def create(params)
+        def create(token:, params: {})
           post(
             REQUEST_PATH,
-            body(params)
+            body(params),
+            token
           )
         end
 
-        def batch_create(batch)
+        def batch_create(token:, batch:)
           batch.map do |params|
-            create(params)
+            create(token: token, params: params)
           end
         end
 
         def body(params)
+          params = params.transform_keys(&:to_sym)
+
           list = ATTRIBUTES.each.with_object({}) do |key, hash|
             hash[key] = params[key] if params.has_key?(key)
           end

@@ -7,14 +7,17 @@ module Clicksign
       ATTRIBUTES = [:request_signature_key]
 
       class << self
-        def notify(params = {})
+        def notify(token:, params: {})
           post(
             REQUEST_PATH,
-            body(params)
+            body(params),
+            token
           )
         end
 
         def body(params)
+          params = params.transform_keys(&:to_sym)
+
           ATTRIBUTES.each.with_object({}) do |attribute, hash|
             hash[attribute] = params[attribute] if params.has_key?(attribute)
           end
