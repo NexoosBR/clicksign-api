@@ -12,6 +12,7 @@ module Clicksign
         end
 
         def find(token:, params:)
+          params = params.transform_keys(&:to_sym)
           get(REQUEST_PATH + params[:key], token)
         end
 
