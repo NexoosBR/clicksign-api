@@ -55,7 +55,7 @@ RSpec.describe Clicksign::API::DocumentsSigners do
           end
         end
 
-        it { expect(json[:list][:key]).to eq('721ff97f-83d7-44c8-92a0-7c7f287f73f6') }
+        it { expect(response['list']['key']).to eq('721ff97f-83d7-44c8-92a0-7c7f287f73f6') }
       end
     end
   end
@@ -67,7 +67,7 @@ RSpec.describe Clicksign::API::DocumentsSigners do
           VCR.use_cassette('Clicksign::API::DocumentsSigners.create/batch-request') do
             described_class.batch_create(
               token: 'valid_token',
-              batch:
+              params:
                 [
                   {
                     document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
@@ -90,9 +90,9 @@ RSpec.describe Clicksign::API::DocumentsSigners do
           end
           
         it do
-          expect(JSON.parse(response[0].body)["list"]["key"]).to eq('8c5cf01d-09d2-474c-b9a1-b4ef6bc1b603')
-          expect(JSON.parse(response[1].body)["list"]["key"]).to eq('4add9d39-54cb-44f3-88be-fb67ab45b0be')
-          expect(JSON.parse(response[2].body)["list"]["key"]).to eq('bb1a4b55-cd16-4778-b2dc-9184160026b8')
+          expect((response[0])['list']['key']).to eq('8c5cf01d-09d2-474c-b9a1-b4ef6bc1b603')
+          expect((response[1])['list']['key']).to eq('4add9d39-54cb-44f3-88be-fb67ab45b0be')
+          expect((response[2])['list']['key']).to eq('bb1a4b55-cd16-4778-b2dc-9184160026b8')
         end
       end
     end
