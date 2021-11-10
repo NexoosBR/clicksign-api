@@ -18,7 +18,7 @@ RSpec.describe Clicksign::API::Document do
           end
         end
 
-        it { expect(json[:document][:key]).to eq('ae7618d4-3958-4d7d-ade3-59def0d1288d') }
+        it { expect(response['document']['key']).to eq('ae7618d4-3958-4d7d-ade3-59def0d1288d') }
       end
 
       context 'with all available parameters' do
@@ -37,7 +37,7 @@ RSpec.describe Clicksign::API::Document do
           end
         end
 
-        it { expect(json[:document][:key]).to eq('28343efd-dccb-4e7a-9989-49e792b3c266') }
+        it { expect(response['document']['key']).to eq('28343efd-dccb-4e7a-9989-49e792b3c266') }
       end
     end
 
@@ -55,7 +55,7 @@ RSpec.describe Clicksign::API::Document do
           end
         end
 
-        it { expect(json[:errors]).to eq(['Nome do arquivo não contém mimetype válido']) }
+        it { expect(response['errors']).to eq(['Nome do arquivo não contém mimetype válido']) }
       end
     end
 
@@ -72,7 +72,7 @@ RSpec.describe Clicksign::API::Document do
         end
       end
 
-      it { expect(json[:errors]).to eq(['Access Token inválido']) }
+      it { expect(response['errors']).to eq(['Access Token inválido']) }
     end
   end
 
@@ -89,7 +89,7 @@ RSpec.describe Clicksign::API::Document do
         end
       end
 
-      it { expect(json[:document][:key]).to eq('28343efd-dccb-4e7a-9989-49e792b3c266') }
+      it { expect(response['document']['key']).to eq('28343efd-dccb-4e7a-9989-49e792b3c266') }
     end
 
     context 'invalid key' do
@@ -104,7 +104,7 @@ RSpec.describe Clicksign::API::Document do
         end
       end
 
-      it { expect(json[:errors]).to eq(['Documento não encontrado']) }
+      it { expect(response['errors']).to eq(['Documento não encontrado']) }
     end
   end
 

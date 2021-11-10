@@ -67,24 +67,26 @@ RSpec.describe Clicksign::API::DocumentsSigners do
           VCR.use_cassette('Clicksign::API::DocumentsSigners.create/batch-request') do
             described_class.batch_create(
               token: 'valid_token',
-              params:
-                [
-                  {
-                    document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
-                    signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
-                    sign_as: 'transferor'
-                  },
-                  {
-                    document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
-                    signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
-                    sign_as: 'transferee'
-                  },
-                  {
-                    document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
-                    signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
-                    sign_as: 'contractee'
-                  }
-                ]
+              params: {
+                batch:
+                  [
+                    {
+                      document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
+                      signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
+                      sign_as: 'transferor'
+                    },
+                    {
+                      document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
+                      signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
+                      sign_as: 'transferee'
+                    },
+                    {
+                      document_key: '28343efd-dccb-4e7a-9989-49e792b3c266',
+                      signer_key: '6fa5fc10-dcbe-4bae-a361-0350ea44fb5d',
+                      sign_as: 'contractee'
+                    }
+                  ]
+                }
               )
             end
           end
