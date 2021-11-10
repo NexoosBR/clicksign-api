@@ -58,7 +58,7 @@ RSpec.describe Clicksign::API::Batch do
           end
         end
 
-        it { expect(json[:batch][:key]).to eq('d98c9561-3750-4dab-a7a2-46676a148afd') }
+        it { expect(response['batch']['key']).to eq('d98c9561-3750-4dab-a7a2-46676a148afd') }
       end
     end
   end

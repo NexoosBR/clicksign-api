@@ -49,7 +49,7 @@ RSpec.describe Clicksign::API::Notifier do
           end
         end
 
-        it { expect(response.status).to eq(202) }
+        it { expect(response[:status]).to eq(202) }
       end
     end
   end
