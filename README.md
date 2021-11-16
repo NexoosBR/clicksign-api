@@ -55,7 +55,7 @@ To see all available parameters, please, check the [API docs](https://developers
 ```ruby
 file = File.open('/path/to/file/local/file.pdf', 'r')
 document = Clicksign::API::Document.create( params: { path: '/path/to/file/on/clicksign.pdf', file: file }, token: "key.sandbox")
-# Class Hash => {"document"=> {"key"=>"key"}
+# => {"document"=> {"key"=>"00000000-0000-0000-0000-000000000000"}
 
 ```
 
@@ -63,7 +63,7 @@ document = Clicksign::API::Document.create( params: { path: '/path/to/file/on/cl
 
 ```ruby
 find_document = Clicksign::API::Document.find(params: { key: response_document['document']['key'] }, token: "key.sandbox")
-# Class Hash => {"document"=> {"key"=>"key"}
+# => {"document"=> {"key"=>"00000000-0000-0000-0000-000000000000"}
 
 ```
 
@@ -71,14 +71,14 @@ find_document = Clicksign::API::Document.find(params: { key: response_document['
 
 ```ruby
 signer = Clicksign::API::Signer.create(params: { email: 'mail@email.com', auths: ['email'], delivery: 'email' }, token: "key.sandbox")
-# Class Hash => {"signer"=> {"key"=>"key"}
+# => {"signer"=> {"key"=>"00000000-0000-0000-0000-000000000000"}
 
 ```
 #### Add Signers to Document
 
 ```ruby
 signer_document = Clicksign::API::DocumentsSigners.create(params: { document_key: response_document['document']['key'], signer_key: response_signer['key'], sign_as: 'sign_as' }, token: "key.sandbox")
-# Class Hash => {"list"=>{"key"=>"cc222eb2-238b-4d53-9c2f-4ff0b03912f2"}
+# => {"list"=>{"key"=>"00000000-0000-0000-0000-000000000000"}
 
   ```
 
@@ -94,7 +94,7 @@ batch = Clicksign::API::Batch.create(
   token: "key.sandbox"
 )
 
-# Class Hash => {"batch"=>{"key"=>"a5060ae8-f957-4da1-b260-956338695a96"}
+# => {"batch"=>{"key"=>"00000000-0000-0000-0000-000000000000"}
 
 ```
 #### Notifying Signer by e-mail
