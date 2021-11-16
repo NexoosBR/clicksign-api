@@ -101,7 +101,7 @@ batch = Clicksign::API::Batch.create(
 
 ```ruby
 notify = Clicksign::API::Notifier.notify(params: { request_signature_key: 'request_signature_key' }, token: "key.sandbox")
-# Class Hash => {:status=>202} 
+# => {:status=>202} 
 
 ```
 
@@ -109,7 +109,7 @@ notify = Clicksign::API::Notifier.notify(params: { request_signature_key: 'reque
 
 ```ruby
 notify = Clicksign::API::Notifier.notify(params: { request_signature_key: 'request_signature_key' }, token: "key.sandbox")
-# Class Hash => {:status=>202} 
+# => {:status=>202} 
 
 ## Development
 
