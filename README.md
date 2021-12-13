@@ -54,52 +54,32 @@ To see all available parameters, please, check the [API docs](https://developers
 
 ```ruby
 file = File.open('/path/to/file/local/file.pdf', 'r')
-document = Clicksign::API::Document.create( params: { path: '/path/to/file/on/clicksign.pdf', file: file }, token: 'valid_token')
-# => #<Faraday::Response ...>
+document = Clicksign::API::Document.create( params: { path: '/path/to/file/on/clicksign.pdf', file: file }, token: "key.sandbox")
+# => {"document"=> {"key"=>"00000000-0000-0000-0000-000000000000"}
 
-document.success?
-# => true # false
-
-response_document = JSON.parse(document.body)
-# => {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
 ```
 
 #### View documents
 
 ```ruby
-find_document = Clicksign::API::Document.find(params: { key: response_document['document']['key'] }, token: 'valid_token')
-# => #<Faraday::Response ...>
+find_document = Clicksign::API::Document.find(params: { key: response_document['document']['key'] }, token: "key.sandbox")
+# => {"document"=> {"key"=>"00000000-0000-0000-0000-000000000000"}
 
-find_document.success?
-# => true # false
-
-JSON.parse(find_document.body)
-# => {:document=> {:key=> '...', :path=> '...', :status => '...', ... }
 ```
 
 #### Create Signers
 
 ```ruby
-signer = Clicksign::API::Signer.create(params: { email: 'mail@email.com', auths: ['email'], delivery: 'email' }, token: 'valid_token')
-# => #<Faraday::Response ...>
+signer = Clicksign::API::Signer.create(params: { email: 'mail@email.com', auths: ['email'], delivery: 'email' }, token: "key.sandbox")
+# => {"signer"=> {"key"=>"00000000-0000-0000-0000-000000000000"}
 
-signer.success?
-# => true # false
-
-response_signer = JSON.parse(signer.body)
-# => {:signer=> {:key=> '...', :email=> '...', ... }
 ```
 #### Add Signers to Document
 
 ```ruby
-signer_document = Clicksign::API::DocumentsSigners.create(params: { document_key: response_document['document']['key'], signer_key: response_signer['key'], sign_as: 'sign_as' }, token: 'valid_token')
-# => #<Faraday::Response ...>
+signer_document = Clicksign::API::DocumentsSigners.create(params: { document_key: response_document['document']['key'], signer_key: response_signer['key'], sign_as: 'sign_as' }, token: "key.sandbox")
+# => {"list"=>{"key"=>"00000000-0000-0000-0000-000000000000"}
 
-signer_document.success?
-# => true # false
-
-response_signer_document = JSON.parse(signer_document.body)
-# => {:list=> {:key=> '...', ... }
   ```
 
 ##### Creating Documents in Batches
@@ -111,37 +91,25 @@ batch = Clicksign::API::Batch.create(
     signer_key: response_signer['key'],
     summary: true
   },
-  token: 'valid_token'
+  token: "key.sandbox"
 )
-# => #<Faraday::Response ...>
 
-batch.success?
-# => true # false
+# => {"batch"=>{"key"=>"00000000-0000-0000-0000-000000000000"}
 
-rseponse_batch = JSON.parse(batch.body)
-# => #{"batch"=> {"key"=>"..."
 ```
 #### Notifying Signer by e-mail
 
 ```ruby
-notify = Clicksign::API::Notifier.notify(params: { request_signature_key: 'request_signature_key' }, token: 'valid_token')
-# => #<Faraday::Response ...>
+notify = Clicksign::API::Notifier.notify(params: { request_signature_key: 'request_signature_key' }, token: "key.sandbox")
+# => {:status=>202} 
 
-notify.success?
-# => true # false
-
-JSON.parse(notify.body)
-# => ##<struct Faraday::Env, method=:post request_body="{\"request_signature_key\":
 ```
 
 #### Notifying Signer by whatsapp
 
 ```ruby
-notify = Clicksign::API::Notifier.notify(params: { request_signature_key: 'request_signature_key' }, token: 'valid_token')
-# => #<Faraday::Response ...>
-
-notify.success?
-# => true # false
+notify = Clicksign::API::Notifier.notify(params: { request_signature_key: 'request_signature_key' }, token: "key.sandbox")
+# => {:status=>202} 
 
 ## Development
 
