@@ -16,6 +16,10 @@ module Clicksign
           get(REQUEST_PATH + params[:key], token)
         end
 
+        def cancel(token:, params: {})
+          patch("#{REQUEST_PATH}#{params[:key]}/cancel", body(params), token)
+        end
+
         def body(params)
           params = params.transform_keys(&:to_sym)
 
