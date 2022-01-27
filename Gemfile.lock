@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    clicksign-api (1.1.1)
+    clicksign-api (1.1.4.pre.alpha)
       faraday
 
 GEM
@@ -87,4 +87,4 @@ DEPENDENCIES
   webmock (~> 3.0)
 
 BUNDLED WITH
-   2.2.29
+   2.2.33
