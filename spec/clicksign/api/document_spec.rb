@@ -107,4 +107,35 @@ RSpec.describe Clicksign::API::Document do
       it { expect(json[:errors]).to eq(['Documento não encontrado']) }
     end
   end
+
+  describe '.cancel' do
+    context 'valid key' do
+      let(:response) do
+        VCR.use_cassette('Clicksign::API::Document.cancel/valid-key') do
+          described_class.cancel(
+            token: 'valid_token',
+            params:{
+              key: 'fa5fe1de-e386-4067-ae29-b7435dba1c71'
+            }
+          )
+        end
+      end
+      it { expect(json[:document][:key]).to eq('fa5fe1de-e386-4067-ae29-b7435dba1c71') }
+    end
+
+    context 'invalid key' do
+      let(:response) do
+        VCR.use_cassette('Clicksign::API::Document.cancel/invalid-key') do
+          described_class.cancel(
+            token: 'valid_token',
+            params: {
+              key: '123'
+            }
+          )
+        end
+      end
+
+      it { expect(json[:errors]).to eq(['Documento não encontrado']) }
+    end
+  end
 end

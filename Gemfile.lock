@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    clicksign-api (1.1.4.alpha)
-      faraday
+    clicksign-api (1.1.5.alpha)
+      faraday (= 1.8.0)
 
 GEM
   remote: https://rubygems.org/

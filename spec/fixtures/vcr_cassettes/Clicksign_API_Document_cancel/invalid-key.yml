@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://sandbox.clicksign.com/api/v1/documents/123/cancel?access_token=CLICKSIGN_ACCESS_TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"document":{}}'
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Mon, 31 Jan 2022 17:46:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '40'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Rate-Limit:
+      - '50'
+      X-Rate-Limit-Remaining:
+      - '49'
+      X-Rate-Limit-Reset:
+      - '1643651180'
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - b175d4d5-15d4-4ef6-9a3a-e1fbb6b3eba8
+      X-Runtime:
+      - '0.016400'
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJlcnJvcnMiOlsiRG9jdW1lbnRvIG7Do28gZW5jb250cmFkbyJdfQ==
+    http_version: 
+  recorded_at: Mon, 31 Jan 2022 17:46:16 GMT
+recorded_with: VCR 4.0.0
