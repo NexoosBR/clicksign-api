@@ -19,6 +19,16 @@ module Clicksign
         
         parse(response)
       end
+
+      def patch(request_path, body, token)
+        response = conn.patch do |req|
+          req.url request_path, { access_token: Clicksign::API.credentials[token] }
+          req.headers['Content-Type'] = 'application/json'
+          req.body = body.to_json
+        end
+
+        parse(response)
+      end
       
       private
 
