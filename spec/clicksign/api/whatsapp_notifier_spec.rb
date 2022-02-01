@@ -47,7 +47,7 @@ RSpec.describe Clicksign::API::WhatsappNotifier do
           end
         end
 
-        it { expect(response.status).to eq(202) }
+        it { expect(response[:status]).to eq(202) }
       end
     end
   end

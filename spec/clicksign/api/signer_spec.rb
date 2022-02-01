@@ -57,7 +57,7 @@ RSpec.describe Clicksign::API::Signer do
           end
         end
 
-        it { expect(json[:signer][:key]).to eq('6fa5fc10-dcbe-4bae-a361-0350ea44fb5d') }
+        it { expect(response['signer']['key']).to eq('6fa5fc10-dcbe-4bae-a361-0350ea44fb5d') }
       end
     end
   end

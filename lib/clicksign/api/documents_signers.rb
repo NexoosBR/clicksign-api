@@ -17,9 +17,11 @@ module Clicksign
           )
         end
 
-        def batch_create(token:, batch:)
-          batch.map do |params|
-            create(token: token, params: params)
+        def batch_create(token:, params:)
+          params = params.transform_keys(&:to_sym)
+
+          params[:batch].map do |single_params|
+            create(token: token, params: single_params)
           end
         end
 
