@@ -1,6 +1,6 @@
 RSpec.describe Clicksign::API do
   it 'has a version number' do
-    expect(Clicksign::API::VERSION).to eq('1.1.7.alpha')
+    expect(Clicksign::API::VERSION).to eq('1.1.8.alpha')
   end
 
   describe '.configure' do

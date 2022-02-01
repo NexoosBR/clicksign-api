@@ -1,5 +1,5 @@
 module Clicksign
   module API
-    VERSION = "1.1.7.alpha"
+    VERSION = "1.1.8.alpha"
   end
 end
