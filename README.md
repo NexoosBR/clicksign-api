@@ -5,6 +5,10 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e4c11dd4129d37ee34c/maintainability)](https://codeclimate.com/github/NexoosBR/clicksign-api/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e4c11dd4129d37ee34c/test_coverage)](https://codeclimate.com/github/NexoosBR/clicksign-api/test_coverage)
 
+## Unmaintained
+
+The Clicksign-Api gem is <b>no longer maintained</b>. Please use the official [Clicksign Integration](https://www.clicksign.com/integracao/).
+
 ## Installation
 
 Add this line to your application's Gemfile:
